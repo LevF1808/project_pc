@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ ssd }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Твердотельный накопитель (SSD)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Твердотельный накопитель (англ. Solid-State Drive, SSD) — компьютерное энергонезависимое немеханическое запоминающее устройство
+		на основе микросхем памяти, альтернатива жёстким дискам (HDD).
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe  style="width: 100%; height: 100%;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/fb35be74e55d4bc6aa97c2772b48d3be/embed?autostart=1&preload=1&transparent=1"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+    
+    <div class="info">
+        <h1><span>Печатная плата (PCB)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Основа, на которой размещены все электронные компоненты.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Контроллер (NAND Controller)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">«Мозг» SSD, управляющий чтением, записью, распределением данных и взаимодействием с системой.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Чипы флэш-памяти (NAND Flash)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Основное место хранения информации, состоящее из миллионов ячеек-транзисторов, хранящих данные в виде заряда (0 или 1).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Кэш-память (DRAM Cache)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Небольшой объем быстрой оперативной памяти для временного хранения часто используемых данных, ускоряющий доступ к ним и снижающий износ NAND-памяти (присутствует не во всех моделях).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Хост-интерфейс (Host Interface)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Разъем и протокол для соединения с материнской платой (например, SATA или M.2 (PCIe/NVMe)), обеспечивающий передачу данных.</p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Первый SSD был представлен еще в 1976 году компанией Dataram (модель Bulk Core), имел объем всего 256 КБ (8 планок по 256 КБ) и стоил около 9700 долларов, но не получил массового распространения из-за высокой цены и энергозависимости.
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 15px;">
+    <h2>Как записываються данные в твердотельный накопитель?</h2>
+    <img style="float: right; margin: 15px; height: 380px;" class="photo_basic" src="{% static 'main/images/ssd.gif' %}"/>
+    <br/>
+    <p class="p2">Каждая ячейка памяти — это полевой МОП-транзистор с плавающим затвором,
+	в котором хранится отрицательный заряд. Его отличие от обычного МОП-транзистора заключается в наличии плавающего затвора — проводника в слое диэлектрика.</p>
+    <br/>
+    <p class="p2">При создании разности потенциалов между стоком и истоком и наличии положительного потенциала на затворе от истока к стоку потечет ток. Однако, при наличии достаточно большой разности потенциалов некоторые электроны «пробивают» слой диэлектрика и оказываются в плавающем затворе. Это явление называется туннельный эффект.</p>
+	<br/>
+	<p class="p2">Отрицательно заряженный плавающий затвор создает электрическое поле, мешающее протеканию тока от истока к стоку. Более того, наличие электронов в плавающем затворе увеличивает пороговое напряжение, при котором открывается транзистор.
+	При каждой «записи» в плавающий затвор транзистора слой диэлектрика незначительно повреждается, что накладывает ограничение на количество циклов перезаписи каждой ячейки.</p>
+	<br/>
+	<p class="p2">Изменение порогового напряжения позволяет «программировать» транзисторы. Транзисторы с зарядом в плавающем затворе не откроются при подаче на затвор напряжения больше порогового напряжения для 
+	транзистора без электронов, но меньше порогового напряжения для транзистора с электронами. Назовем такое значение напряжением чтения.</p>
+
+	<h2>Схема транзистора с плавающим затвором</h2>
+    <img style="margin: 15px; height: 140px; float: left;" class="photo_basic" src="{% static 'main/images/ssd.png' %}"/>
+    <div class="highlight" style="width: auto; margin-left: 29%;"><p class="p2">Каждая ячейка памяти — это полевой МОП-транзистор с плавающим затвором, в котором хранится отрицательный заряд. Его отличие от обычного МОП-транзистора заключается в наличии плавающего затвора — проводника в слое диэлектрика.</p></div>
+    <ul class="ul">
+        <li class="li"><strong>Исток: </strong>область, из которой основные носители заряда (электроны) поступают в канал.</li>
+		<li class="li"><strong>Затвор управления: </strong>слой поликремния поверх плавающего затвора, отделенный от него тонким диэлектриком.</li>
+        <li class="li"><strong>Плавающий затвор: </strong>область поликремния, окруженную со всех сторон диэлектриком, т. е. он электрически не связан с другими электродами и его потенциал "плавает".</li>
+		<li class="li"><strong>Диэлектрик: </strong>материалы, практически не проводящие электрический ток из-за отсутствия свободных зарядов (электронов) в их структуре, обладающие высоким сопротивлением. </li>
+		<li class="li"><strong>Сток: </strong>Область, в которую уходят электроны; между стоком и истоком находится канал проводимости</li>
+
+	</ul>
+</div>
+{% endblock after_main %}

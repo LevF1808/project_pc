@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ index }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}" />
+    <link rel="icon" href="{% static 'main/images/favicon.png' %}" type="image/png" />
+</head>
+<body>
+    <div id="progress_bar_cont">
+        <div id="progress"></div>
+    </div>
+    <div class="maket">
+        <header class="navbar">
+            <a class="logo" href="{% url 'main' %}">КакУстроенПК</a>
+
+            <ul class="nav-links">
+                <li><a href="{% url 'main' %}">Главная</a></li>
+                <li><a href="{% url 'archit' %}">Архитектура ПК</a></li>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Компоненты ПК &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'motherboard' %}">Материнская плата</a></li>
+                        <li><a href="{% url 'cpu' %}">Процессор</a></li>
+                        <li><a href="{% url 'gpu' %}">Видеокарта</a></li>
+                        <li><a href="{% url 'oper' %}">Оперативная память</a></li>
+                        <li><a href="{% url 'hdd' %}">Жесткий диск</a></li>
+                        <li><a href="{% url 'ssd' %}">Твердотельный накопитель</a></li>
+                        <li><a href="{% url 'psu' %}">Блок питания</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Машина Тьюринга &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'turing' %}">Создатель</a></li>
+                        <li><a href="{% url 'machine' %}">Машина Тьюринга</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Квантовый компьютер &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'kvant_history' %}">История создания</a></li>
+                        <li><a href="{% url 'kvant_machine' %}">Квантовый<br/>компьютер</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <button class="theme-btn" id="themeBtn">
+                <span class="theme-icon">☼</span>
+            </button>
+
+            <button class="hamburger" aria-label="Меню">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </header>
+
+        <div class="photo_main_section">
+            <section class="slider-container_2">
+                <div class="slide_2 active-slide_2">
+                    <img class="photo_basic photo_main_img" src="{% static 'main/images/computer.png' %}"/>
+                </div>
+                <div class="slide_2 active-slide_2">
+                    <img class="photo_basic photo_main_img" src="{% static 'main/images/machine_t.png' %}"/>
+                </div>
+                <div class="slide_2 active-slide_2">
+                    <img class="photo_basic photo_main_img" src="{% static 'main/images/kvant_pc.png' %}"/>
+                </div>
+                <div class="slide_2 active-slide_2">
+                    <img class="photo_basic photo_main_img" src="{% static 'main/images/turing_main.png' %}"/>
+                </div>
+                <button class="prev-btn_2" aria-label="Предыдущий слайд">&#10094;</button>
+                <button class="next-btn_2" aria-label="Следующий слайд">&#10095;</button>
+            </section>
+
+            <div class="h">
+                <hr class="hr"/>
+                <h1 class="main_p">Главная</h1>
+                <hr class="hr"/>
+                <br/>
+                <p class="p">Добро пожаловать на сайт, на котором рассказываеться о компьютерах и его компонентах.</p>
+                <p class="p">Цель сайта - донести информацию от базовых компонентов ПК через теоретические основы (машина Тьюринга) к перспективным технологиям (квантовые вычисления) максимально понятно и доступно.</p>
+                <p class="p">Материал структурирован так, чтобы дать как практическое понимание для сборки и апгрейда ПК, так и фундаментальное - для любознательных умов.</p>
+                <a href="{% url 'archit' %}" class="button">
+                    Узнать больше
+                </a>
+            </div>
+        </div>
+
+        <main class="main-content" style="margin-top: 10px;">
+            <div class="intro">
+                <p class="p2">Данный сайт создан для всех, кто хочет понять, как работает компьютер. Он объясняет сложные вещи простыми словами - от основных деталей ПК до перспективных технологий будущего.</p>
+            </div>
+
+            <div class="hint-section">
+                <div class="hint-item" id="hintItem1">
+                    <div class="hint-btn-wrapper">
+                        <button class="hint-btn" aria-label="Подсказка для начинающих">?</button>
+                        <div class="hint-line"></div>
+                    </div>
+                    <div class="hint-content" id="hintContent1">
+                        <div class="hint-content-inner">
+                            <div class="section">
+                                <h2>Для кого этот сайт</h2>
+                                <ul class="ul">
+                                    <li class="li">Новички, которые только начинают знакомиться с устройством компьютера</li>
+                                    <li class="li">Студенты, изучающие информатику и компьютерные науки</li>
+                                    <li class="li">Люди, желающие собрать или улучшить свой ПК</li>
+                                    <li class="li">Все любознательные, кто интересуется технологиями</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hint-item" id="hintItem2">
+                    <div class="hint-btn-wrapper">
+                        <button class="hint-btn" aria-label="Подсказка для продвинутых">?</button>
+                        <div class="hint-line"></div>
+                    </div>
+                    <div class="hint-content" id="hintContent2">
+                        <div class="hint-content-inner">
+                            <div class="section">
+                                <h2>Что есть на этом сайте?</h2>
+                                <ul class="ul">
+                                    <li class="li"><strong>Архитектура ПК</strong> - изучаем процессор, память, материнскую плату и другие компоненты</li>
+                                    <li class="li"><strong>Компоненты ПК</strong> - оперативная память, жёсткие диски, SSD, кэш, видеопамять и много чего другого</li>
+                                    <li class="li"><strong>Теоретические основы</strong> - машина Тьюринга и принципы вычислений</li>
+                                    <li class="li"><strong>Квантовые компьютеры</strong> - технологии будущего, которые меняют мир</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <p class="p2">Выберите интересный для вас раздел и начните изучать что-то новое!</p>
+            </div>
+        </main>
+
+        <section class="slider-container">
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/">
+                    <img class="photo_slide" src="{% static 'main/images/slide_1.png' %}"/></a>
+                <div class="characteristics"><ul>GPU</ul></div>
+            </div>
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/22e2195da712d582/operativnaa-pamat-kingston-fury-beast-black-kf560c30bbek2-32-32-gb/" >
+                <img class="photo_slide" src="{% static 'main/images/slide_2.png' %}"/></a>
+                <div class="characteristics"><ul>RAM</ul></div>
+            </div>
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/">
+                <img class="photo_slide" src="{% static 'main/images/slide_3.png' %}"/></a>
+                <div class="characteristics"><ul>SSD M2</ul></div>
+            </div>
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/">
+                <img class="photo_slide" src="{% static 'main/images/slide_4.png' %}"/></a>
+                <div class="characteristics"><ul>SATA SSD</ul></div>
+            </div>
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/">
+                <img class="photo_slide" src="{% static 'main/images/slide_5.png' %}"/></a>
+                <div class="characteristics"><ul>CPU</ul></div>
+            </div>
+            <div class="slide active-slide">
+                <a target="_blank" href="https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/">
+                <img class="photo_slide" src="{% static 'main/images/slide_6.png' %}"/></a>
+                <div class="characteristics"><ul>HDD</ul></div>
+            </div>
+
+            <button class="prev-btn" aria-label="Предыдущий слайд">&#10094;</button>
+            <button class="next-btn" aria-label="Следующий слайд">&#10095;</button>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025</p>
+        </footer>
+    </div>
+
+    <a href="#" class="scroll-top" id="scrollTopBtn" aria-label="Наверх">↑</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+</body>
+</html>

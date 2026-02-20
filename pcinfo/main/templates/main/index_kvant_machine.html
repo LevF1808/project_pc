@@ -1,0 +1,120 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Как работает Квантовый Компьютер{% endblock title %}
+
+{% block before_main %}
+<div class="photo_main_section" style="margin-bottom: -65px;">
+        <div class="h">
+            <hr class="hr"/>
+            <h1 style="text-align: center;">Квантовый компьютер</h1>
+            <hr class="hr"/>
+            <br>
+            <p class="p">
+                Классические компьютеры, от вашего смартфона до суперкомпьютеров, работают на битах — переключателях, которые могут быть либо включены (1), либо выключены (0).
+                Квантовые компьютеры используют принципы квантовой механики, чтобы делать вещи, которые кажутся невозможными: находиться в нескольких состояниях одновременно и вычислять параллельные вселенные решений.
+            </p>
+
+            <a href="#interactive-demo" class="button">Запустить симуляцию кубита</a>
+        </div>
+                <img src="{% static 'main/images/kvant_c.png' %}" class="photo_basic">
+    </div>
+{% endblock before_main %}
+
+
+{% block main %}
+<h2>Основные принципы</h2>
+<p class="p2">Чтобы понять квантовую машину, нужно забыть интуитивную физику. Здесь действуют два главных закона:</p>
+
+<div class="info" id="qubit-info">
+    <h1>1. Кубит (Квантовый бит)</h1>
+    <div class="content-wrapper">
+            <img src="{% static 'main/images/bloch_sphere.png' %}" class="photo_basic" style="float: left;">
+            <p class="p2">
+                Представьте монету. Классический бит — это монета, лежащая орлом (1) или решкой (0) вверх.
+                <strong>Кубит</strong> — это вращающаяся монета. Пока она вращается, она представляет собой и орла, и решку одновременно с определенной вероятностью.
+            </p>
+            <ul class="ul">
+                <li class="li">Бит: $0$ или $1$</li>
+                <li class="li">Кубит: $\alpha|0\rangle + \beta|1\rangle$ (суперпозиция)</li>
+            </ul>
+    </div>
+</div>
+
+<div class="info">
+    <h1>2. Суперпозиция</h1>
+    <div class="content-wrapper">
+        <p class="p2">
+            Это способность квантовой системы находиться во всех возможных состояниях сразу до момента измерения.
+            Если у вас есть 2 классических бита, они могут хранить только одну комбинацию (например, 00, 01, 10 или 11).
+        </p>
+        <div class="highlight">
+            <p class="p2"><strong>Магия масштаба:</strong> 2 кубита находятся в 4 состояниях одновременно. 3 кубита — в 8. 300 кубитов могут хранить больше состояний, чем атомов во Вселенной.</p>
+        </div>
+    </div>
+</div>
+
+<div class="info">
+    <h1>3. Квантовая запутанность</h1>
+    <div class="content-wrapper">
+        <p class="p2">
+            Эйнштейн называл это "жутким действием на расстоянии". Если два кубита "запутаны", они становятся единым целым. Изменение состояния одного кубита <strong>мгновенно</strong> меняет состояние другого, даже если они находятся на разных концах галактики.
+        </p>
+    </div>
+</div>
+
+    <div class="turing-app-container" id="interactive-demo">
+        <h2 style="text-align: center; border: none;">Лаборатория: Измерение Кубита</h2>
+        <p class="p2" style="text-align: center; margin-bottom: 20px;">
+            Нажмите "Измерить", чтобы заставить кубит принять конкретное состояние. Обратите внимание: до измерения он находится в суперпозиции.
+        </p>
+
+        <div class="qubit-stage">
+            <div class="bit-box" id="classic-bit-container">
+                <h3>Бит</h3>
+                <div class="bit-0">
+                    <div class="state-circle" id="c-bit-visual">0</div>
+                </div>
+                <button class="button" onclick="flipClassicBit()" style=" font-size: 0.9rem;">Переключить</button>
+                <div class="q-logs" id="c-log">Состояние: 0</div>
+            </div>
+
+            <div class="qubit-box">
+                <h3>Кубит</h3>
+                <div class="qubit-superposition" id="q-wrapper">
+                    <div class="state-circle" id="q-bit-visual">?</div>
+                </div>
+
+                <div class="probability-bar">
+                    <div class="prob-fill" id="prob-fill"></div>
+                </div>
+                <div style="font-size: 0.8rem; display: flex; justify-content: space-between;">
+                    <span>|0⟩</span><span>|1⟩</span>
+                </div>
+
+                <div style="display: flex; gap: 5px; margin-top: 15px;">
+                    <button class="button" onclick="rotateQubit()" style="flex:1; padding: 10px; font-size: 0.8rem;">Вращать</button>
+                    <button class="button" onclick="measureQubit()" style="flex:1; padding: 10px; font-size: 0.8rem; background: linear-gradient(135deg, #8e44ad, #9b59b6);">Измерить</button>
+                </div>
+                <div class="q-logs" id="q-log">Суперпозиция</div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 30px;">
+            <img src="{% static 'main/images/kvant_kriostat.jpg' %}" class="photo_basic" style="float: right; margin-left: 0; height: 320px;">
+
+        <h2>Как это выглядит?</h2>
+        <p class="p2">
+            То, что вы часто видите на фото — это не сам чип, а <strong>криостат растворения</strong> (часто называемый "золотой люстрой").
+        </p>
+        <ul class="ul">
+            <li class="li"><strong>Температура:</strong> Кубиты работают при температуре близкой к абсолютному нулю (-273.15°C). Это холоднее, чем в глубоком космосе.</li>
+            <li class="li"><strong>Изоляция:</strong> Любой шум, вибрация или фотон света могут разрушить квантовое состояние (декогеренция).</li>
+            <li class="li"><strong>Золото:</strong> Используется для идеальной проводимости сигналов без нагрева.</li>
+        </ul>
+</div>
+{% endblock after_main %}

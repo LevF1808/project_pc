@@ -1,0 +1,122 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ gpu }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Видеокарта (GPU)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Видеокарта (графический адаптер) — это устройство в компьютере, которое преобразует данные в изображение для вывода на монитор, выполняя сложные вычисления для 2D/3D графики, игр и видео, снимая нагрузку с центрального процессора.
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px solid var(--border);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> 
+		<iframe  style="width: 100%; height: 100%; border-radius: 8px;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
+		xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/06770553669444efb89658a921b2d54f/embed"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+    
+    <div class="info">
+        <h1><span>Графический процессор (GPU)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">«Мозг» видеокарты, выполняющий основные вычисления для создания изображения.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Видеопамять (VRAM)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Быстрая память для хранения текстур, буферов кадра и других данных, необходимых GPU.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Видеоконтроллер</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Формирует изображение в видеопамяти, взаимодействуя с GPU и другими компонентами.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>RAMDAC (Цифро-аналоговый преобразователь)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Преобразует цифровые сигналы в аналоговые для старых мониторов (в современных цифровых системах его роль часто интегрирована).</p>
+        </div>
+    </div>
+</div>
+
+    <div class="info">
+        <h1><span>Видео-ПЗУ (VBIOS)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Хранит BIOS видеокарты – прошивку, необходимую для начальной загрузки и работы карты. </p>
+        </div>
+    </div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Видеокарта, скорее всего, является самым большим потребителем энергии в вашем компьютере - особенно когда она загружена.
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 20px; padding: 2rem;">
+    <h2 style="text-align: center; border-bottom: none; margin-top: 0;">Выбор видеокарту</h2>
+    <p class="p2" style="text-align: center; margin-bottom: 20px;">
+        Введите параметры системы для расчета через ML-модель.
+    </p>
+
+    <div style="max-width: 600px; margin: 0 auto;">
+        {% if form %}
+            <form method="post">
+                {% csrf_token %}
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; margin-bottom: 5px;">{{ form.brend_2.label }}</label>
+                        {{ form.brend_2 }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.memory.label }}</label>
+                        {{ form.memory }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.frequency_2.label }} (ГГц)</label>
+                        {{ form.frequency_2 }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.resolution.label }}</label>
+                        {{ form.resolution }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.port.label }}</label>
+                        {{ form.port }}
+                    </div>
+                    </div>
+                    <div style="grid-column: span 2; margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px;">{{ form.works_2.label }}</label>
+                        {{ form.works_2 }}
+                    </div>
+                <button type="submit" class="button" style="width: 100%; padding: 10px; cursor: pointer;">Найти модель</button>
+            </form>
+        {% endif %}
+
+        {% if result %}
+        <div id="result_area" style="margin-top: 20px; padding: 20px; background: var(--bg-secondary); border: 2px solid var(--border-highlight); border-radius: 10px; text-align: center;">
+            <p class="p2" style="font-weight: bold; font-size: 1.2rem; margin: 0;">
+                Рекомендуемый процессор: {{ result }}
+            </p>
+            <p class="p2" style="font-size: 0.8rem;">
+                (Ответ может быть не точный, поэтому лучше их проверяйте)
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock after_main %}

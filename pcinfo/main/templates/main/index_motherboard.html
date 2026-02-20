@@ -1,0 +1,125 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ motherboard }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Материнская плата</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+      Материнская плата (motherboard) — это главная печатная плата компьютера, своего рода «скелет» или «нервная система», которая соединяет, питает и обеспечивает взаимодействие всех основных компонентов: процессора (CPU), оперативной памяти (RAM), видеокарты, накопителей (HDD/SSD) и периферийных устройств, позволяя им работать как единое целое, передавая данные и энергию.
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe  style="width: 100%; height: 100%;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/7f24b03929c547bf8627654121074fe9/embed"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+
+    <div class="info">
+        <h1><span>Сокет (Socket)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Разъем для установки центрального процессора (CPU).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Оперативная память (RAM Slots)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Слоты для модулей ОЗУ (DDR3, DDR4, DDR5).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Чипсет</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Набор микросхем (северный и южный мосты, или единая микросхема), управляющий обменом данными между процессором, памятью и периферийными устройствами.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Слоты расширения (PCIe, PCI)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Разъемы для установки видеокарт, звуковых карт, сетевых адаптеров и других плат расширения.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Разъемы для накопителей (SATA, M.2)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Порты для подключения жестких дисков (HDD), SSD и NVMe накопителей.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Порты ввода/вывода (I/O Panel)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Разъемы для подключения USB-устройств, сетевого кабеля (LAN), звуковых устройств (аудиовыходы), а также для видеовыходов.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Микросхема BIOS/UEFI</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Флеш-память с базовой системой ввода-вывода для начальной загрузки компьютера.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>VRM (Voltage Regulator Module)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Цепь питания, обеспечивающая стабильное напряжение для процессора и других компонентов.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Батарейка CMOS</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Обеспечивает питание для хранения настроек BIOS/UEFI и системного времени.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Коннекторы питания</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Разъемы для подключения кабелей от блока питания. </p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Расстояние между головкой и вращающимся диском настолько мало, что любая пылинка может привести к поломке. Именно поэтому диски собирают в «чистых комнатах».
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 15px;">
+    <h2>Как устроена материнская плата и зачем она нужна?</h2>
+    <img style="float: right; margin: 15px; height: 400px;" class="photo_basic" src="{% static 'main/images/motherboard.jpg' %}"/>
+
+    <p class="p2"><strong>Материнская плата (системная плата)</strong> — это основа любого компьютера. Она объединяет все компоненты в единую систему: процессор, память, накопители и периферию.</p>
+
+    <p class="p2">С точки зрения электричества, материнская плата представляет собой многослойную печатную плату, на которой медные дорожки (шины) соединяют разъемы компонентов. По этим дорожкам передаются данные и питание. От качества материалов и количества слоев зависит стабильность работы и возможность разгона.</p>
+
+    <p class="p2"><strong>Почему это важно?</strong> Материнская плата определяет, какие компоненты вы сможете установить в компьютер. Например, от сокета зависит, какой процессор подойдет, а от чипсета — поддержка разгона и количество портов USB.</p>
+
+    <h2>Основные форм-факторы (размеры)</h2>
+    <ul class="ul">
+        <li class="li"><strong>Mini-ITX (170x170 мм):</strong> Для компактных домашних кинотеатров и офисных ПК</li>
+        <li class="li"><strong>Micro-ATX (244x244 мм):</strong> Самый популярный стандарт для массовых домашних ПК</li>
+        <li class="li"><strong>ATX (305x244 мм):</strong> Стандарт для мощных игровых и рабочих станций</li>
+        <li class="li"><strong>E-ATX (305x330 мм):</strong> Для профессиональных серверов и энтузиастов</li>
+    </ul>
+
+    <div class="highlight" style="margin-top: 20px;">
+        <strong>Интересный факт:</strong> Несмотря на обилие проводов, большинство функций материнской платы (включение, работа вентиляторов, индикация) можно проверить, просто замкнув две контактные "ножки" на передней панели отверткой.
+    </div>
+</div>
+{% endblock after_main %}

@@ -1,0 +1,127 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ kesh }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Процессор (CPU)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Процессор (CPU) — это «мозг» компьютера и других цифровых устройств, электронный чип,
+        который выполняет машинные инструкции программ, обрабатывает данные, управляет всеми компонентами системы, выполняет вычисления (арифметические и логические), а его производительность определяет скорость работы устройства.
+        
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe style="width: 100%; height: 100%;" title="ЦП - Центральный процессор" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/7a4a5133288e43acbea03b098ea5942a/embed?autostart=1&preload=1&transparent=1"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+    
+    <div class="info">
+        <h1><span>Ядро (Core)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Главный вычислительный элемент, включающий:</p>
+            <ul style="margin-top: 1%; margin-left: 2%;">
+                <li>Арифметико-логическое устройство (АЛУ): Выполняет математические и логические операции.</li>
+                <li>Устройство управления: Координирует выполнение инструкций.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Кэш-память (Cache)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Небольшие, но очень быстрые блоки памяти (L1, L2, L3) внутри процессора для временного хранения часто используемых данных, что ускоряет доступ.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Регистры</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Самые быстрые ячейки памяти внутри ядра для хранения текущих команд, данных и промежуточных результатов.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Шины (Bus)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Электрические каналы для передачи данных, адресов и управляющих сигналов между процессором и другими компонентами компьютера.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Тактовый генератор (Clock)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Задает ритм работы процессора, синхронизируя все операции. </p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Процессор стал настолько быстрым, что оперативная память (RAM) не успевала ему "подавать" данные, заставляя его простаивать.
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 20px; padding: 2rem;">
+    <h2 style="text-align: center; border-bottom: none; margin-top: 0;">Выбор процессора</h2>
+    <p class="p2" style="text-align: center; margin-bottom: 20px;">
+        Введите параметры системы для расчета через ML-модель.
+    </p>
+
+    <div style="max-width: 600px; margin: 0 auto;">
+        {% if form %}
+            <form method="post">
+                {% csrf_token %}
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; margin-bottom: 5px;">{{ form.brend.label }}</label>
+                        {{ form.brend }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.kernels.label }}</label>
+                        {{ form.kernels }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.frequency.label }} (ГГц)</label>
+                        {{ form.frequency }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.streams.label }}</label>
+                        {{ form.streams }}
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px;">{{ form.soket.label }}</label>
+                        {{ form.soket }}
+                    </div>
+                    </div>
+                    <div style="grid-column: span 2; margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px;">{{ form.works.label }}</label>
+                        {{ form.works }}
+                    </div>
+                <button type="submit" class="button" style="width: 100%; padding: 10px; cursor: pointer;">Найти модель</button>
+            </form>
+        {% endif %}
+
+        {% if result %}
+        <div id="result_area" style="margin-top: 20px; padding: 20px; background: var(--bg-secondary); border: 2px solid var(--border-highlight); border-radius: 10px; text-align: center;">
+            <p class="p2" style="font-weight: bold; font-size: 1.2rem; margin: 0;">
+                Рекомендуемый процессор: {{ result }}
+            </p>
+            <p class="p2" style="font-size: 0.8rem;">
+                (Ответ может быть не точный, поэтому лучше их проверяйте)
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock after_main %}
+

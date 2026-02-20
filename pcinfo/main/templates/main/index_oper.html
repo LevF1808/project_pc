@@ -1,0 +1,111 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ oper }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Оперативная память (RAM)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Операти́вная па́мять (англ. Random Access Memory, RAM — память с произвольным доступом, в просторечии — оперативка) — в большинстве случаев энергозависимая часть системы компьютерной памяти, в которой во время работы компьютера хранится выполняемый машинный код (программы),
+		а также входные, выходные и промежуточные данные, обрабатываемые процессором.
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe  style="width: 100%; height: 100%;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
+		xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/149778cf65bb49608b7a1c944a972f54/embed?autostart=1&preload=1&transparent=1"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+    
+    <div class="info">
+        <h1><span>Контроллер памяти</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Контроллер оперативной памяти — цифровая схема, управляющая потоками данных между вычислительной системой и оперативной памятью. Может представлять собой отдельную микросхему или быть интегрирована в более сложную микросхему, например, в состав северного моста, микропроцессор или систему на кристалле.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Резисторы</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> пассивные компоненты, которые используются для ограничения тока, согласования сигналов (импеданса) на высоких частотах и управления напряжением, обеспечивая стабильность работы шин данных и команд, а также для защиты от помех.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Плата</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Микросхема которая связывает все компоненты оперативной памяти.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>чипы DRAM</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">DRAM (англ. dynamic random access memory — динамическая память с произвольным доступом) — тип компьютерной памяти, отличающийся использованием полупроводниковых материалов, энергозависимостью и возможностью доступа к данным, хранящимся в произвольных ячейках памяти (см. запоминающее устройство с произвольным доступом).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Конденсатор платы</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Конденсатор на печатной плате — это электронный компонент на печатные платы (ПП). Он хранит и высвобождает электрическую энергию. </p>
+        </div>
+    </div>
+	<div class="info">
+        <h1><span>Индуктор</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> Индуктор — часть электрической машины, отвечающая за создание в ней рабочего магнитного потока.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Управление питанием</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">методы и технологии снижения энергопотребления модулями RAM и материнской платой, включая переход в «спящие» режимы для экономии энергии.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Слот позиционирования</span></h1>
+        <div class="content-wrapper">
+            <p class="p2"> физический разъем (DIMM) на материнской плате, имеющий ключевые механические вырезы (ключи), которые соответствуют вырезам на модуле RAM, гарантируя установку правильным образом.</p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Данные в оперативной памяти теряются при выключении компьютера
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 15px;">
+    <h2>Как записываются и хранятся данные в оперативной памяти?</h2>
+    <img style="float: right; margin: 15px; height: 380px;" class="photo_basic" src="{% static 'main/images/oper.webp' %}"/>
+
+    <p class="p2"><strong>ОЗУ (RAM)</strong> — это энергозависимая память. Данные в ней хранятся только при включенном питании компьютера. При выключении питания вся информация исчезает.</p>
+
+    <p class="p2">Каждая ячейка оперативной памяти состоит всего из двух элементов: <strong>одного транзистора и одного конденсатора</strong>. Конденсатор хранит заряд (есть заряд — 1, нет заряда — 0), а транзистор позволяет этот заряд считать или записать.</p>
+
+    <p class="p2"><strong>Почему память называется "динамической"?</strong> Конденсаторы очень маленькие и не могут долго удерживать заряд — он быстро стекает. Поэтому контроллер памяти постоянно обновляет (регенерирует) данные, подзаряжая конденсаторы тысячи раз в секунду.</p>
+
+    <h2>Поколения оперативной памяти</h2>
+    <ul class="ul">
+        <li class="li"><strong>DDR3:</strong> Напряжение 1.5В, устаревший стандарт</li>
+        <li class="li"><strong>DDR4:</strong> Напряжение 1.2В, самый распространенный стандарт</li>
+        <li class="li"><strong>DDR5:</strong> Напряжение 1.1В, новейший стандарт с высокой скоростью</li>
+    </ul>
+
+    <div class="highlight" style="margin-top: 20px;">
+        <strong>Интересный факт:</strong> В отличие от SSD, оперативная память не имеет ограничений на количество перезаписей. Она может изнашиваться только от перегрева или времени.
+    </div>
+</div>
+{% endblock after_main %}

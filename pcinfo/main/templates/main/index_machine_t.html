@@ -1,0 +1,135 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} {{ machine_t }}{% endblock title %}
+
+{% block before_main %}
+<div class="photo_main_section" style="margin-bottom: -65px;">
+    <div class="h">
+        <hr class="hr"/>
+        <h1 style="text-align: center;">Машина Тьюринга</h1>
+        <hr class="hr"/>
+        <br>
+        <p class="p">
+            Ещё до появления электронных компьютеров, в 1936 году, Алан Тьюринг придумал абстрактное устройство с бесконечной лентой.
+            Это устройство, способное выполнять всего три действия (читать, писать, двигаться), стало математической основой для всех современных языков программирования и алгоритмов.
+        </p>
+
+        <a href="#interactive-demo" class="button">Запустить симуляцию</a>
+    </div>
+    <img src="{% static 'main/images/машина_тьюринга.png' %}" class="photo_basic" style="height: 400px;"/>
+</div>
+{% endblock before_main %}
+
+
+{% block main %}
+<h2>Основные компоненты</h2>
+<p class="p2">Машина Тьюринга удивительно проста. Она состоит всего из трех частей, которых достаточно для любого вычисления.</p>
+
+<div class="info" id="qubit-info">
+    <h1>1. Головка (Сканер/Процессор)</h1>
+    <div class="content-wrapper">
+        <img src="{% static 'main/images/skaner.jpeg' %}" class="photo_basic" style="max-width: 350px;">
+        <p class="p2">
+            Это "мозг" и "руки" машины. Головка всегда находится над одной ячейкой ленты.
+        </p>
+        <ul class="ul">
+            <li class="li"><strong>Читает:</strong> Видит символ в текущей ячейке (например, '0', '1' или пробел).</li>
+            <li class="li"><strong>Пишет:</strong> Может стереть старый символ и написать новый.</li>
+            <li class="li"><strong>Двигается:</strong> Перемещается на одну ячейку влево (←) или вправо (→).</li>
+        </ul>
+    </div>
+</div>
+
+<div class="info">
+    <h1>2. Лента (Память)</h1>
+    <div class="content-wrapper">
+        <p class="p2">
+            Представьте себе бесконечную кассу с отсеками (ячейками), уходящими в бесконечность влево и вправо.
+        </p>
+        <div class="highlight">
+            <p class="p2"><strong>Важно:</strong> В каждый момент времени заполнена данными только конечная часть ленты. Остальные ячейки считаются пустыми (обычно обозначаются символом пробела '_' или '∅'). Это наша оперативная память.</p>
+        </div>
+    </div>
+</div>
+
+<div class="info">
+    <h1>3. Таблица правил (Программа)</h1>
+    <div class="content-wrapper">
+        <p class="p2">
+            Это инструкция для головки. В ней записано: "Если ты в состоянии А и видишь символ Х, сделай Y, перейди в состояние В и сдвинься".
+        </p>
+        <p class="p2">
+            Например, простая программа для сложения двух чисел может содержать всего десяток таких правил.
+        </p>
+    </div>
+</div>
+
+<div class="turing-app-container" id="interactive-demo">
+    <h2 style="text-align: center; border: none;">Интерактивная модель</h2>
+    <p class="p2" style="text-align: center; margin-bottom: 20px;">
+        Перед вами действующая машина Тьюринга. На ленте записано число двоичными цифрами. Нажимайте "Сделать шаг", чтобы увидеть, как головка выполняет программу.
+    </p>
+    <div class="turing-visual-area">
+
+        <div class="turing-component scanner-unit" title="Это 'глаз' и 'рука' машины">
+            <div class="scanner-pointer">▼</div>
+            <div class="scanner-body">
+                <span class="label">СКАНЕР</span>
+                <div class="state-badge">Состояние: <span id="st-val">Начало</span></div>
+            </div>
+        </div>
+
+        <div class="tape-viewport">
+            <div class="tape-track" id="main-tape">
+                </div>
+        </div>
+
+        <div class="turing-component logic-unit">
+            <div class="logic-header">МОЗГ МАШИНЫ</div>
+            <div class="logic-info">
+                Вижу символ: <span id="read-char" class="highlight-val">-</span><br>
+                Действие: <span id="action-text" class="highlight-val">Жду запуска</span>
+            </div>
+        </div>
+
+        <div class="turing-controls">
+            <button class="t-btn run-btn" onclick="runTuringStep()">Сделать шаг</button>
+            <button class="t-btn reset-btn" onclick="resetTuring()">Сброс</button>
+        </div>
+    </div>
+</div>
+
+<div class="step-explanation">
+    <h3>Как она думает прямо сейчас:</h3>
+    <div class="step-cards">
+        <div class="s-card" id="step-1">
+            <div class="s-num">1</div>
+            <p><b>Смотрю:</b> Головка видит символ в желтой ячейке.</p>
+        </div>
+        <div class="s-card" id="step-2">
+            <div class="s-num">2</div>
+            <p><b>Сверяюсь:</b> Машина ищет этот символ в таблице правил.</p>
+        </div>
+        <div class="s-card" id="step-3">
+            <div class="s-num">3</div>
+            <p><b>Меняю:</b> Перезаписывает символ и едет дальше.</p>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 30px;">
+    <img src="{% static 'main/images/machine_t_2.jpg' %}" class="photo_basic" style="float: right; margin-left: 0; height: 320px;" alt="Реконструкция машины Тьюринга">
+    <h2>Это не просто теория</h2>
+    <p class="p2">
+        Хотя машина Тьюринга — абстрактное понятие, её физические реконструкции существуют! Они состоят из мотора, бумажной ленты и контроллера.
+    </p>
+    <ul class="ul">
+        <li class="li"><strong>Тезис Чёрча — Тьюринга:</strong> Любая интуитивно понимаемая вычислимая функция может быть вычислена на машине Тьюринга.</li>
+        <li class="li"><strong>Универсальная машина:</strong> Тьюринг доказал, что можно создать одну машину, которая будет выполнять программу любой другой машины. Это — прообраз современного процессора (CPU).</li>
+    </ul>
+</div>
+{% endblock after_main %}

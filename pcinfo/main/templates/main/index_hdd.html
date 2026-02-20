@@ -1,0 +1,80 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ hdd }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Жесткий диск (HDD)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Жесткий диск (HDD) — это сложное электромеханическое устройство, предназначенное для долговременного хранения данных. 
+        В отличие от SSD, здесь используются вращающиеся магнитные пластины и подвижные головки.
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe  style="width: 100%; height: 100%;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/0fb2d4597ee24418bc8807c49b9be8cf/embed?autostart=1&preload=1&transparent=1"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты</h2>
+    
+    <div class="info">
+        <h1><span>Магнитные пластины (Platters)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Это стеклянные или алюминиевые диски, покрытые тонким слоем магнитного материала. Именно на них хранятся ваши файлы в виде последовательности нулей и единиц.</p>
+            <div class="highlight">Скорость вращения этих дисков обычно составляет 5400 или 7200 оборотов в минуту (RPM).</div>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Блок магнитных головок</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Головки «парят» над поверхностью диска на расстоянии нескольких нанометров. Они считывают и записывают информацию, изменяя магнитное поле участков на пластине.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Шпиндельный двигатель</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Обеспечивает стабильное и быстрое вращение пластин. От точности его работы зависит скорость доступа к данным и долговечность устройства.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Плата управления (Контроллер)</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Это "мозги" диска. Контроллер управляет движением головок, скоростью вращения, исправляет ошибки чтения и передает данные компьютеру через интерфейс SATA.</p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Интересный факт:</strong> Расстояние между головкой и вращающимся диском настолько мало, что любая пылинка может привести к поломке. Именно поэтому диски собирают в «чистых комнатах».
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 15px;">
+    <h2>Как записываються данные в жесткий диск?</h2>
+    <img style="float: right; margin: 15px; height: 310px;" class="photo_basic" src="{% static 'main/images/hdd_work.gif' %}"/>
+    <br/>
+    <p class="p2">Пластины крепятся на шпиндель электромотора, который заставляют их вращаться со скоростью 7200 об/мин, а контроллер поддерживает постоянную скорость вращения при помощи контактов на обратной стороне корпуса, через них же и осуществляется питание. Именно на пластинах хранятся все данные, причём не только пользовательские, но и служебные необходимые самому устройству.</p>
+    <br/>
+    <p class="p2">В результате вращения диска создается воздушный поток, который удерживает головку на расстоянии около 10 нм от поверхности диска (толщина волоса – 70 000 нм). Когда компьютер выключен или диск еще не разогнался, головки находятся в «парковочной зоне».</p>
+    <h2>Схема HDD</h2>
+    <img style="margin: 15px; height: 350px; float: left;" class="photo_basic" src="{% static 'main/images/hdd_karta.png' %}"/>
+    <div class="highlight" style="width: auto; margin-left: 29%;"><p class="p2">Данные хранятся в дорожках на поверхности диска. Каждая дорожка разделена на секторы. Секторы образуют кластер. Ориентируясь на карту дорожек и секторов, контроллер записывает и считывает информацию.</p></div>
+    <ul class="ul">
+        <li class="li"><strong>Дорожки: </strong>концентрические окружности на магнитных пластинах жесткого диска, предназначенные для записи и считывания данных.</li>
+        <li class="li"><strong>Сектор дорожки: </strong>минимальная физическая единица хранения данных, представляющая собой небольшой секторный участок (сегмент) на концентрической магнитной дорожке пластины. </li>
+        <li class="li"><strong>Геометрический сектор: </strong>минимальная адресуемая область на поверхности магнитного диска, получаемая при делении кольцевой дорожки (track) радиальными линиями.</li>
+        <li class="li"><strong>Кластер: </strong>минимальная логическая область на HDD, выделяемая файловой системой (NTFS, FAT32) для хранения файла, объединяющая один или несколько физических секторов.</li>
+    </ul>
+</div>
+{% endblock after_main %}

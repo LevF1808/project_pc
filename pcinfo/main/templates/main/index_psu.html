@@ -1,0 +1,121 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ psu }}{% endblock title %}
+
+{% block main %}
+<hr class="hr"/>
+<p class="main_p">Блок Питания (PSU)</p>
+<hr class="hr"/>
+
+<div class="intro">
+    <p class="p2">
+        Блок питания (PSU) — это сердце компьютера. Он преобразует переменный ток из розетки в постоянный ток низкого напряжения, необходимый для работы процессора, видеокарты и других компонентов. От его качества зависит стабильность и долговечность всей системы.
+    </p>
+</div>
+
+<div class="pc-interactive-wrapper" style="float: none; margin: 20px auto; max-width: 1000px;">
+    <div style="width: 100%; height: 400px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column; border: 2px var(--border-highlight);">
+        <div style="width: 100%; height: 100%;" class="sketchfab-embed-wrapper"> <iframe  style="width: 100%; height: 100%;" title="Жесткий диск 3D-Модель" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/69ccd1be3a77497cb2acc9e39e7c52b3/embed?autostart=1&preload=1&transparent=1"> </iframe> </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center;">Основные компоненты БП</h2>
+
+    <div class="info">
+        <h1><span>Входной фильтр и Выпрямитель</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Первая стадия защиты. Фильтр убирает помехи из сети, а диодный мост превращает переменный ток в пульсирующий постоянный. Здесь также находятся большие конденсаторы.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Трансформатор</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Главный элемент, который понижает высокое напряжение (220В) до необходимых компьютеру значений (12В, 5В, 3.3В). Он работает на высокой частоте для повышения эффективности.</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Система охлаждения</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Вентилятор, который отводит тепло от нагревающихся транзисторов и радиаторов. В дорогих моделях он может останавливаться при низкой нагрузке (полупассивный режим).</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h1><span>Модульные кабели</span></h1>
+        <div class="content-wrapper">
+            <p class="p2">Система подключения, позволяющая подсоединять только те провода, которые нужны. Это улучшает циркуляцию воздуха в корпусе и внешний вид сборки.</p>
+        </div>
+    </div>
+</div>
+
+<div class="highlight" style="margin-top: 40px;">
+    <strong>Важно знать:</strong> Сертификат 80 PLUS (White, Bronze, Gold, Platinum) показывает КПД блока питания. Чем выше уровень, тем меньше энергии уходит в тепло.
+</div>
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin-top: 20px; padding: 2rem;">
+    <h2 style="text-align: center; border-bottom: none; margin-top: 0;">Калькулятор мощности БП</h2>
+    <p class="p2" style="text-align: center; margin-bottom: 20px;">
+        Введите параметры системы для расчета через ML-модель.
+    </p>
+
+    <div style="max-width: 600px; margin: 0 auto;">
+        {% if form %}
+            <form method="post" id="psuForm">
+                {% csrf_token %}
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <label class="p2" style="font-size: 0.9rem;">{{ form.cpu_power.label }}:</label>
+                        {{ form.cpu_power }}
+                    </div>
+                    <div>
+                        <label class="p2" style="font-size: 0.9rem;">{{ form.gpu_power.label }}:</label>
+                        {{ form.gpu_power }}
+                    </div>
+                    <div>
+                        <label class="p2" style="font-size: 0.9rem;">{{ form.fans_count.label }}:</label>
+                        {{ form.fans_count }}
+                    </div>
+                    <div>
+                        <label class="p2" style="font-size: 0.9rem;">{{ form.storage_count.label }}:</label>
+                        {{ form.storage_count }}
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <label class="p2" style="font-size: 0.9rem;">{{ form.safety_margin.label }}:</label>
+                        {{ form.safety_margin }}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label class="p2" style="font-size: 0.9rem;">{{ form.upgrade.label }}:</label>
+                    {{ form.upgrade }}
+                </div>
+
+                <button type="submit" class="button" style="width: 100%;">Рассчитать через ИИ</button>
+            </form>
+        {% else %}
+            <p style="color: red; text-align: center;">Ошибка: Форма не была передана из сервера!</p>
+        {% endif %}
+
+        {% if result %}
+            <div id="result_area" style="margin-top: 20px; padding: 20px; background: var(--bg-secondary); border: 2px solid var(--border-highlight); border-radius: 10px; text-align: center;">
+                {% if result > 0 %}
+                <p class="p2" style="font-weight: bold; font-size: 1.2rem; margin: 0;">
+                    Рекомендуемая мощность: {{ result }} Вт
+                </p>
+                {% else %}
+                <p class="p2" style="font-weight: bold; font-size: 1.2rem; margin: 0;">
+                    Вам не нужен БП
+                </p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock after_main %}

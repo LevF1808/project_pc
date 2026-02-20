@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+		{% block title %}
+
+		{% endblock title %}
+	</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}" />
+    <link rel="icon" href="{% static 'main/images/favicon.png' %}" type="image/png" />
+</head>
+<body>
+    <div id="progress_bar_cont">
+        <div id="progress"></div>
+    </div>
+
+    <div class="maket">
+        <header class="navbar">
+            <a class="logo" href="{% url 'main' %}">КакУстроенПК</a>
+
+            <ul class="nav-links">
+                <li><a href="{% url 'main' %}">Главная</a></li>
+                <li><a href="{% url 'archit' %}">Архитектура ПК</a></li>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Компоненты ПК &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'motherboard' %}">Материнская плата</a></li>
+                        <li><a href="{% url 'cpu' %}">Процессор</a></li>
+                        <li><a href="{% url 'gpu' %}">Видеокарта</a></li>
+                        <li><a href="{% url 'oper' %}">Оперативная память</a></li>
+                        <li><a href="{% url 'hdd' %}">Жесткий диск</a></li>
+                        <li><a href="{% url 'ssd' %}">Твердотельный накопитель</a></li>
+                        <li><a href="{% url 'psu' %}">Блок питания</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Машина Тьюринга &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'turing' %}">Создатель</a></li>
+                        <li><a href="{% url 'machine' %}">Машина Тьюринга</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Квантовый компьютер &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'kvant_history' %}">История создания</a></li>
+                        <li><a href="{% url 'kvant_machine' %}">Квантовый<br/>компьютер</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <button class="theme-btn" id="themeBtn" aria-label="Переключить тему">
+                <span class="theme-icon">☼</span>
+            </button>
+
+            <button class="hamburger" aria-label="Меню">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </header>
+
+		{% block before_main %}
+
+		{% endblock before_main %}
+
+		<main class="main-content">
+		{% block main %}
+
+		{% endblock main %}
+		</main>
+
+        {% block after_main %}
+
+		{% endblock after_main %}
+
+        <footer class="footer">
+            <p>&copy; 2025</p>
+        </footer>
+    </div>
+
+    <a href="#" class="scroll-top" id="scrollTopBtn" aria-label="Наверх">↑</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="{% static 'main/js/script.js' %}"></script>
+</body>
+</html>

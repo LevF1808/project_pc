@@ -1,0 +1,126 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ kvant_history }}{% endblock title %}
+
+{% block main %}
+
+<div class="dop_container">
+    <img class="photo" src="{% static 'main/images/feynman.jpg' %}"/>
+        <img style="float: right; margin-left: 10px;" class="photo" src="{% static 'main/images/manin.jpg' %}"/>
+
+    <div style="overflow: hidden;">
+        <hr class="hr"/>
+        <h1 class="main_p">Ричард Фейнман и Юрий Манин</h1>
+        <h3 style="text-align: center; color: var(--text-color);">(Основоположники концепции)</h3>
+        <hr class="hr"/>
+
+            <p class="p2">Выдающиеся физики и математики, которые первыми осознали, что классические компьютеры не способны эффективно моделировать квантовые системы.</p>
+            <p class="p2">Их идеи легли в основу новой эры вычислений, использующей законы микромира для решения задач, непосильных обычным суперкомпьютерам.</p>
+    </div>
+</div>
+
+{% endblock main %}
+
+{% block after_main %}
+<div class="dop_container" style="margin: 20px 0;">
+    <h2>Зарождение идеи</h2>
+        <img style="height: 300px; float: right; margin: 15px;" class="photo_basic" src="{% static 'main/images/kvant.jpg' %}"/>
+    <div class="highlight" style="width: 65%;">
+        <p class="p2">В начале 1980-х годов возникло понимание: чтобы описать природу, нужно использовать инструменты самой природы.</p>
+    </div>
+
+    <h3>Первые шаги</h3>
+    <ul class="ul">
+        <li class="li">В 1980 году советский математик <strong>Юрий Манин</strong> в книге «Вычислимое и невычислимое» первым предложил идею использования квантовых эффектов для вычислений.</li>
+        <li class="li">Год спустя, в 1981-м, <strong>Ричард Фейнман</strong> на конференции в MIT доказал, что точное моделирование квантовых систем на классических машинах невозможно из-за экспоненциального роста сложности.</li>
+    </ul>
+    <hr/>
+    <br/>
+    <h3>Хронология первых идей</h3>
+    <ul class="ul">
+        <li class="li"><strong>1980:</strong> Публикация теоретической основы Юрием Маниным.</li>
+        <li class="li"><strong>1981:</strong> Знаменитая лекция Фейнмана «Моделирование физики на компьютерах».</li>
+    </ul>
+</div>
+
+<div class="dop_container" style="margin-bottom: 20px;">
+    <h2>Основы квантового компьютера</h2>
+
+    <div style="display: flex; flex-direction: column; align-items: flex-end; float: right; margin-left: 15px;">
+        <img class="photo_basic" style="height: 350px; margin-bottom: 15px;" src="{% static 'main/images/david.jpg' %}"/>
+        <img src="{% static 'main/images/kybit.png' %}" class="photo_basic" style="height: 300px;" />
+    </div>
+    <div style="width: 65%;" class="intro">
+        <strong>Дэвид Дойч (1985):</strong> Физик из Оксфорда, который перевел философские идеи в строгую математическую модель универсального квантового компьютера.
+    </div>
+
+    <h3>Принципы работы</h3>
+    <div class="intro" style="width: 65%;" ><strong> Кубит (квантовый бит)</strong> — это фундаментальная единица информации в квантовых компьютерах.</div>
+    <p class="p2">В отличие от классического бита, квантовый бит (<strong>кубит</strong>) обладает уникальными свойствами:</p>
+    <ul class="ul">
+            <li class="li"><strong>Квантовая суперпозиция в информатике</strong> — это фундаментальный принцип квантовых вычислений, позволяющий кубитам (квантовым битам) находиться одновременно в состояниях
+            \(0\) и \(1\) с определенными вероятностями до момента измерения. В отличие от классических битов, суперпозиция обеспечивает
+            параллельную обработку огромного массива данных, значительно ускоряя решение сложных задач.</li>
+        <li class="li"><strong>Запутанность:</strong> Кубиты могут быть запутаны, то есть состояние одного кубита зависит от состояния другого, независимо от расстояния между ними. Взаимозависимость кубитов, позволяющая мгновенно передавать изменения состояния внутри системы.</li>
+    </ul>
+</div>
+
+<div class="dop_container" style="margin-bottom: 20px;">
+    <h2>Прорыв: Алгоритмы Шора и Гровера</h2>
+
+    <img title="Питер Шор" style="float: right; margin: 15px; height: 310px;" class="photo_basic" src="{% static 'main/images/piter.png' %}"/>
+     <img title="Лов Гровер" style="float: right; margin: 15px; height: 310px;" class="photo_basic" src="{% static 'main/images/lov.jpg' %}"/>
+
+    <div style="width: 60%;" class="intro">
+        <p class="p2">Квантовые компьютеры обрели практический смысл, когда математики доказали, что они могут взламывать коды и искать информацию быстрее любого алгоритма в мире.</p>
+    </div>
+
+    <div class="info" style="padding: 5px;">
+        <h3>Алгоритм Шора (1994)</h3>
+        <div class="content-wrapper">
+            <p class="p2">Питер Шор разработал метод разложения больших чисел на множители. Это открытие потрясло мир, так как поставило под угрозу криптографию RSA, на которой держится безопасность интернета.</p>
+        </div>
+    </div>
+
+    <div class="info" style="padding: 5px;">
+        <h3>Алгоритм Гровера (1996)</h3>
+        <div class="content-wrapper">
+            <p class="p2">Лов Гровер предложил способ мгновенного поиска в неструктурированных базах данных, обеспечив квадратичное ускорение по сравнению с классическими методами.</p>
+        </div>
+    </div>
+</div>
+
+<div class="dop_container"  style="margin-bottom: 20px;">
+    <h2>Эпоха реализации и «Превосходство»</h2>
+
+    <img style="float: right; margin: 15px; height: 350px;" class="photo_basic" src="{% static 'main/images/kvant_pc.png' %}"/>
+
+    <div class="intro" style="width: 60%;">
+        <p class="p2">От чистой теории человечество перешло к инженерным решениям. Лидеры индустрии (Google, IBM, Rigetti) соревнуются в создании стабильных систем.</p>
+    </div>
+        <div class="highlight" style="width: 60%;">
+            <p class="p2"><strong>Квантовое превосходство:</strong> В 2019 году Google объявила, что их процессор Sycamore за 200 секунд выполнил расчет, который занял бы у обычного суперкомпьютера 10 000 лет.</p>
+        </div>
+        <div class="info" style="padding: 5px;">
+            <h3>Современные подходы</h3>
+            <div class="content-wrapper">
+                <ul class="ul">
+                    <li class="li"><strong>Сверхпроводники:</strong> Чипы, работающие при температурах близких к абсолютному нулю (IBM, Google).</li>
+                    <li class="li"><strong>Ионные ловушки:</strong> Использование отдельных атомов, удерживаемых лазерами.</li>
+                </ul>
+            </div>
+        </div>
+</div>
+
+<div class="dop_container" style="margin-bottom: 20px;">
+    <h2>Будущее технологий</h2>
+    <div class="content-wrapper">
+        <ul class="ul">
+            <li class="li"><strong>Фармакология:</strong> Точное моделирование молекул для создания лекарств от неизлечимых болезней.</li>
+            <li class="li"><strong>Постквантовая криптография:</strong> Разработка новых стандартов защиты данных, устойчивых к квантовым атакам.</li>
+            <li class="li"><strong>Логистика:</strong> Решение сложнейших задач оптимизации маршрутов и ресурсов в реальном времени.</li>
+        </ul>
+    </div>
+</div>
+{% endblock after_main %}

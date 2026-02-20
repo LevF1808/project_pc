@@ -1,0 +1,191 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ archit }}{% endblock title %}
+
+
+{% block before_main %}
+
+{% endblock before_main %}
+
+
+{% block main %}
+<div class="main-grid">
+    <div class="pc-interactive-wrapper">
+        <img src="{% static 'main/images/pc.jpg' %}" alt="PC Build" class="pc-base-img">
+
+        <svg viewBox="0 0 1000 1000" class="pc-svg-overlay">
+            
+            <a href="#case" class="part-link case-group">
+                <polygon points="162,139,698,53,875,109,875,815,844,822,841,882,828,905,805,909,760,905,760,892,809,899,815,837,769,830,720,840,714,909,697,928,668,938,622,928,622,915,665,925,688,856,606,853,596,830,426,817,406,866,383,869,351,863,357,860,377,814,275,807,249,886,217,889,190,889,187,873,203,873,211,867,220,824,181,820,174,801,161,801" class="part-shape case-full-body"/>
+                
+                <rect x="175" y="60" width="680" height="40" class="edge-trigger" /> <rect x="175" y="870" width="680" height="40" class="edge-trigger" /> <rect x="175" y="60" width="40" height="850" class="edge-trigger" /> <rect x="815" y="60" width="40" height="850" class="edge-trigger" /> <title>Корпус системного блока</title>
+            </a>
+
+            <a href="#motherboard" class="part-link mb-group">
+                <polygon points="621,235,627,244,628,652,341,654,340,261,352,255" class="part-shape mb-full-body" />
+                
+                <rect x="580" y="240" width="100" height="100" class="mb-trigger" />
+                <title>Материнская плата</title>
+            </a>
+
+            <a href="#fans" class="part-link fan-group">
+                <polygon points="197,250,211,246,217,238,326,254,326,420,198,415" class="part-shape mb-full-body" />
+                <polygon points="256,170,653,111,759,144,758,210,342,258,278,236,269,225,256,210" class="part-shape mb-full-body" />
+                <polygon points="727,126,849,154,856,796,723,815" class="part-shape mb-full-body" />
+                <title>Вентиляторы</title>
+            </a>
+
+            <a href="#ram" class="part-link">
+                <polygon points="503,276,555,270,562,273,574,273,575,469,548,463,542,466,505,463,506,372,505,372,506,372" class="part-shape" />
+                <title>Оперативная память</title>
+            </a>
+
+            <a href="#gpu" class="part-link">
+                <polygon points="596,598,276,595,256,573,227,575,224,477,596,461,610,461,617,466,637,466,653,467,673,487,675,566,644,596" class="part-shape" />
+                <title>Видеокарта</title>
+            </a>
+
+            <a href="#cpu-cooler" class="part-link">
+                <polygon points="307,284,304,419,304,438,385,440,397,451,412,457,428,454,441,450,479,450,485,434,495,425,507,411,514,396,518,383,520,368,520,349,518,333,514,319,507,306,498,291,484,281,470,274,457,270,431,270,411,268,386,273,332,276" class="part-shape" />
+                <title>Башенный кулер</title>
+            </a>
+            <a href="#cpu" class="part-link">
+                <polygon points="481,318,478,400,418,402,419,323" class="part-shape" />
+                <title>Процессор</title>
+            </a>
+
+            <a href="#psu" class="part-link">
+                <polygon points="390,774,486,763,484,647,356,646,214,647,212,756" class="part-shape" />
+                <title>Блок питания</title>
+            </a>
+            <a href="#hdd" class="part-link">
+                <polygon points="511,770,511,616,516,611,614,615,617,620,615,775" class="part-shape" />
+                <title>Жесткий диск</title>
+            </a>
+        </svg>
+    </div>
+
+    <div class="content-text">
+        <div class="h">
+            <hr class="hr"/>
+            <h1 class="main_p">Архитектура ПК</h1>
+            <hr class="hr"/>
+            <br/>
+            <div class="intro">
+                <p class="p2">Компьютер — это универсальное устройство для работы с информацией, состоящее из взаимосвязанных аппаратных компонентов.</p>
+            </div>
+            <p class="p2">Этот раздел познакомит вас с архитектурой системного блока. С помощью интерактивной схемы вы сможете:</p>
+            <ul style="margin-top: 2%;">
+                <li class="li">Увидеть расположение деталей внутри ПК.</li>
+                <li class="li">Узнать назначение каждого модуля (процессора, памяти, видеокарты и др.).</li>
+                <li class="li">Понять, как они работают вместе.</li>
+            </ul>
+            <div class="highlight">
+                <p class="p2">Просто нажмите на любой элемент на схеме, чтобы узнать о нем подробнее.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block after_main %}
+<div class="info-container">
+
+    <section class="info" id="motherboard">
+        <h1>Материнская плата</h1>
+        <div class="content-wrapper">
+            <p class="p2">Материнская плата - это центральный элемент, представляющий собой печатную плату, на которой размещаются различные компоненты и соединения, необходимые для функционирования сервера. Эта деталь является своего рода "мозгом" и обеспечивает взаимодействие между всеми остальными устройствами и компонентами.</p>
+            <img src="{% static 'main/images/motherboard.jpg' %}" class="photo_basic" style="height: 170px; float: right; margin-right: 10%;"/>
+            <ul class="ul">
+                <li class="li">Соединяет все компоненты ПК между собой.</li>
+                <li class="li">Обеспечивает питание комплектующих.</li>
+                <li class="li">Содержит чипсет, определяющий возможности расширения.</li>
+            </ul>
+            <a href="{% url 'motherboard' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="cpu">
+        <h1>Процессор (CPU)</h1>
+        <div class="content-wrapper">
+            <p class="p2">Ядро любой электронной вычислительной системы (компьютера); предназначен для обработки информации и управления вычислительным процессом, а также работой других устройств.</p>
+            <br/>
+            <img src="{% static 'main/images/cpu.jpeg' %}" class="photo_basic" style="height: 150px;"/>
+            <div class="highlight">
+               <p class="p2">Важно: Процессор во время работы может сильно нагреваться и поэтому часто на него ставят систему охлаждения.</p>
+            </div>
+            <a href="{% url 'cpu' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="gpu">
+        <h1>Видеокарта (GPU)</h1>
+        <div class="content-wrapper">
+            <p class="p2">Видеокарта — ключевой элемент компьютера или ноутбука, отвечающий за обработку и передачу видеосигнала на монитор. Вот почему видеокарта так важна для компьютерной системы.</p>
+            <img src="{% static 'main/images/gpu.jpg' %}" class="photo_basic" style="height: 180px; float: right; margin-right: 10%;"/>
+            <ul class="ul">
+                <li class="li">Графическая обработка.</li>
+                <li class="li">Игры и монтаж видеозаписей.</li>
+                <li class="li">Поддержка воспроизведения на нескольких мониторах.</li>
+                <li class="li">Вывод видеосигнала.</li>
+            </ul>
+            <a href="{% url 'gpu' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="ram">
+        <h1>Оперативная память (RAM)</h1>
+        <div class="content-wrapper">
+            <img src="{% static 'main/images/ОЗУ.jpg' %}" class="photo_basic" style="height: 150px; float: right; margin-bottom: 2%;"/>
+            <p class="p2">Оперативная память — кратковременная. Она хранит только информацию о текущих процессах. Например, результаты вычислений, которые совершает процессор. Или информацию о запущенном коде. Память постоянно очищается, а если выключить устройство — информация там сбросится совсем.</p>
+            <a href="{% url 'oper' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="hdd">
+        <h1>Накопитель (HDD, SSD)</h1>
+        <div class="content-wrapper">
+            <img src="{% static 'main/images/hdd.jpg' %}" class="photo_basic" style="height: 150px; float: right;"/>
+            <img src="{% static 'main/images/ssd_2.png' %}" class="photo_basic" style="height: 150px; float: right;"/>
+            <p class="p2">Накопители для ПК — это устройства для долговременного хранения данных (операционной системы, программ, файлов), которые сохраняют информацию даже при выключенном питании. Основными видами являются SSD (быстрые твердотельные накопители на флэш-памяти) и HDD (емкие жесткие магнитные диски). Они различаются скоростью, надежностью и объемом.</p>
+            <a href="{% url 'hdd' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="psu">
+        <h1>Блок питания (PSU)</h1>
+        <div class="content-wrapper">
+            <img src="{% static 'main/images/psu.jpg' %}" class="photo_basic" style="height: 180px; float: right; margin-bottom: 2%;"/>
+            <p class="p2">Блок питания – необходимая составляющая любой современной компьютерной системы. Он обеспечивает необходимым напряжением все компоненты, имея для этого необходимые преобразователи, кабели и разъемы. Существенным предназначением БП выступает защита содержимого компьютерных систем от перепадов напряжения, помех.</p>
+            <a href="{% url 'psu' %}" class="a2">Узнать больше</a>
+        </div>
+    </section>
+
+    <section class="info" id="cpu-cooler">
+        <h1>Система охлаждения</h1>
+        <div class="content-wrapper">
+            <p class="p2">Система охлаждения компьютера — набор средств для отвода тепла (т. е. охлаждения, холодильная установка) от нагревающихся в процессе работы компьютерных компонентов (процессор, чипсет, транзисторы и диоды, и пр.).</p>
+            <img src="{% static 'main/images/fans.jpg' %}" class="photo_basic" style="height: 150px; margin-bottom: 1%; margin-top: 1%;"/>
+        </div>
+    </section>
+
+    <section class="info" id="case">
+        <h1>Корпус</h1>
+        <div class="content-wrapper">
+            <p class="p2">Защищает внутренние компоненты от повреждений и обеспечивает структурную целостность всей системы, также помогать более эффективному охлаждению компанентов.</p>
+            <img src="{% static 'main/images/korpys.jpg' %}" class="photo_basic" style="height: 150px; margin-top: 1%;"/>
+        </div>
+    </section>
+
+    <section class="info" id="fans">
+        <h1>Корпусные вентиляторы</h1>
+        <div class="content-wrapper">
+            <p class="p2">Обеспечивают циркуляцию воздуха внутри корпуса, выдувая горячий воздух и нагнетая холодный.</p>
+            <img src="{% static 'main/images/fan.jpg' %}" class="photo_basic" style="height: 150px; margin-top: 1%;"/>
+        </div>
+    </section>
+
+</div>
+{% endblock after_main %}
