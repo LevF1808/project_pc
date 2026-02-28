@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['pcinfo.xenous.org']
 
+CSRF_TRUSTED_ORIGINS = ['https://pcinfo.xenous.org']
+
 
 # Application definition
 
