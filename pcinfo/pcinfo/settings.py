@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecu432re-6bu6---343+tm665436ssd-32lv$)v^j*4$5qn*phk_q+$^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['pcinfo.xenous.org']
 
 
 # Application definition
